@@ -1,0 +1,74 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	icon: string;
+	features: string[];
+}
+
+const { title, description, icon, features } = Astro.props;
+---
+
+<div class="service-card">
+	<div class="service-icon">{icon}</div>
+	<h3>{title}</h3>
+	<p class="service-description">{description}</p>
+	<ul class="service-features">
+		{features.map(feature => (
+			<li>{feature}</li>
+		))}
+	</ul>
+</div>
+
+<style>
+	.service-card {
+		background: var(--dark-card);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		padding: 2rem;
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.service-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(0, 163, 255, 0.2);
+		border-color: var(--secondary-color);
+	}
+
+	.service-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.service-card h3 {
+		color: var(--secondary-color);
+		margin-bottom: 1rem;
+		font-size: 1.5rem;
+	}
+
+	.service-description {
+		color: var(--text-gray);
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+
+	.service-features {
+		list-style: none;
+		padding: 0;
+	}
+
+	.service-features li {
+		color: var(--text-gray);
+		padding: 0.5rem 0;
+		padding-left: 1.5rem;
+		position: relative;
+	}
+
+	.service-features li::before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: var(--accent-green);
+		font-weight: bold;
+	}
+</style>

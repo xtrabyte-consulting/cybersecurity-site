@@ -1,11 +1,276 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ServiceCard from '../components/ServiceCard.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+	<section class="hero">
+		<div class="container">
+			<div class="hero-content">
+				<h1>Enterprise-Grade <span class="highlight">Cybersecurity</span> Solutions</h1>
+				<p class="hero-subtitle">Protect your digital infrastructure with comprehensive security assessments, vulnerability management, and compliance testing.</p>
+				<div class="hero-cta">
+					<a href="/quote" class="btn-large btn-primary">Request a Quote</a>
+					<a href="/services" class="btn-large btn-secondary">Our Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="services-preview">
+		<div class="container">
+			<h2 class="section-title">Our Core Services</h2>
+			<p class="section-subtitle">Comprehensive security solutions tailored to your organization's needs</p>
+			
+			<div class="services-grid">
+				<ServiceCard
+					icon="🔍"
+					title="CVE Vulnerability Scans"
+					description="Comprehensive scanning and analysis of Common Vulnerabilities and Exposures across your infrastructure."
+					features={[
+						"Automated continuous scanning",
+						"Detailed vulnerability reports",
+						"Prioritized remediation guidance",
+						"Real-time threat intelligence"
+					]}
+				/>
+				
+				<ServiceCard
+					icon="🛡️"
+					title="Penetration Testing"
+					description="Simulated cyber attacks to identify and exploit vulnerabilities before malicious actors do."
+					features={[
+						"Network and web application testing",
+						"Social engineering assessments",
+						"Executive summary reports",
+						"Post-test remediation support"
+					]}
+				/>
+				
+				<ServiceCard
+					icon="✅"
+					title="EN 18031-1 Compliance"
+					description="Ensure compliance with the latest EN 18031-1 cybersecurity standard for critical infrastructure."
+					features={[
+						"Gap analysis and assessment",
+						"Compliance roadmap development",
+						"Documentation and reporting",
+						"Ongoing compliance monitoring"
+					]}
+				/>
+			</div>
+
+			<div class="cta-section">
+				<a href="/services" class="btn-primary">View All Services</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="why-choose">
+		<div class="container">
+			<h2 class="section-title">Why Choose XtraByte?</h2>
+			<div class="features-grid">
+				<div class="feature">
+					<div class="feature-icon">🎓</div>
+					<h3>Expert Team</h3>
+					<p>Certified security professionals with decades of combined experience</p>
+				</div>
+				<div class="feature">
+					<div class="feature-icon">⚡</div>
+					<h3>Fast Response</h3>
+					<p>24/7 support and rapid incident response capabilities</p>
+				</div>
+				<div class="feature">
+					<div class="feature-icon">🔒</div>
+					<h3>Proven Methods</h3>
+					<p>Industry-standard methodologies and cutting-edge tools</p>
+				</div>
+				<div class="feature">
+					<div class="feature-icon">📊</div>
+					<h3>Clear Reporting</h3>
+					<p>Actionable insights with detailed documentation</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-banner">
+		<div class="container">
+			<h2>Ready to Secure Your Infrastructure?</h2>
+			<p>Get a comprehensive security assessment tailored to your needs</p>
+			<a href="/quote" class="btn-large btn-primary">Request a Quote Today</a>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.hero {
+		padding: 6rem 0;
+		background: linear-gradient(135deg, var(--dark-bg) 0%, #0d1b2a 100%);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(circle at 20% 50%, rgba(0, 163, 255, 0.1) 0%, transparent 50%);
+	}
+
+	.hero-content {
+		position: relative;
+		max-width: 800px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.hero h1 {
+		font-size: 3.5rem;
+		line-height: 1.2;
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+	}
+
+	.highlight {
+		color: var(--secondary-color);
+		position: relative;
+	}
+
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: var(--text-gray);
+		margin-bottom: 2.5rem;
+		line-height: 1.6;
+	}
+
+	.hero-cta {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.btn-large {
+		padding: 1rem 2.5rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1.1rem;
+		transition: all 0.3s;
+		display: inline-block;
+	}
+
+	.btn-secondary {
+		background: transparent;
+		border: 2px solid var(--secondary-color);
+		color: var(--secondary-color);
+	}
+
+	.btn-secondary:hover {
+		background: var(--secondary-color);
+		color: var(--text-light);
+	}
+
+	.services-preview {
+		padding: 6rem 0;
+	}
+
+	.section-title {
+		text-align: center;
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		color: var(--text-light);
+	}
+
+	.section-subtitle {
+		text-align: center;
+		color: var(--text-gray);
+		font-size: 1.1rem;
+		margin-bottom: 4rem;
+	}
+
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	.cta-section {
+		text-align: center;
+		margin-top: 3rem;
+	}
+
+	.why-choose {
+		padding: 6rem 0;
+		background: var(--dark-card);
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+
+	.feature {
+		text-align: center;
+		padding: 2rem;
+	}
+
+	.feature-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.feature h3 {
+		color: var(--text-light);
+		margin-bottom: 1rem;
+		font-size: 1.3rem;
+	}
+
+	.feature p {
+		color: var(--text-gray);
+		line-height: 1.6;
+	}
+
+	.cta-banner {
+		padding: 6rem 0;
+		background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+		text-align: center;
+	}
+
+	.cta-banner h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.cta-banner p {
+		font-size: 1.2rem;
+		margin-bottom: 2rem;
+		opacity: 0.9;
+	}
+
+	@media (max-width: 768px) {
+		.hero h1 {
+			font-size: 2.5rem;
+		}
+
+		.hero-subtitle {
+			font-size: 1.1rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+		}
+
+		.services-grid,
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

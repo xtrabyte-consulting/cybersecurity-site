@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+const blogPosts = [
+	{
+		title: "Understanding the EN 18031-1 Standard: A Comprehensive Guide",
+		excerpt: "Deep dive into the European cybersecurity standard for industrial automation and control systems, and why it matters for your organization.",
+		date: "November 5, 2025",
+		slug: "understanding-en-18031-1-standard",
+		author: "Sarah Mitchell",
+		category: "Compliance"
+	},
+	{
+		title: "Top 10 Critical CVEs of 2025 and How to Protect Your Systems",
+		excerpt: "Analysis of the most dangerous vulnerabilities discovered this year and practical steps to mitigate them in your infrastructure.",
+		date: "November 1, 2025",
+		slug: "top-10-critical-cves-2025",
+		author: "Michael Chen",
+		category: "Vulnerabilities"
+	},
+	{
+		title: "Penetration Testing Best Practices for Critical Infrastructure",
+		excerpt: "Learn how to conduct effective penetration tests on sensitive systems without disrupting operations or compromising safety.",
+		date: "October 28, 2025",
+		slug: "pentest-best-practices-critical-infrastructure",
+		author: "David Rodriguez",
+		category: "Penetration Testing"
+	},
+	{
+		title: "Zero-Day Vulnerabilities: Detection, Response, and Prevention",
+		excerpt: "Strategies for identifying and responding to zero-day exploits before they can be leveraged against your organization.",
+		date: "October 22, 2025",
+		slug: "zero-day-vulnerabilities-guide",
+		author: "Sarah Mitchell",
+		category: "Threat Intelligence"
+	},
+	{
+		title: "SCADA Security: Protecting Industrial Control Systems",
+		excerpt: "Essential security measures for SCADA systems in manufacturing, energy, and critical infrastructure environments.",
+		date: "October 15, 2025",
+		slug: "scada-security-guide",
+		author: "Michael Chen",
+		category: "Industrial Security"
+	},
+	{
+		title: "Building an Effective Vulnerability Management Program",
+		excerpt: "Step-by-step guide to establishing a robust vulnerability management process that scales with your organization.",
+		date: "October 8, 2025",
+		slug: "building-vulnerability-management-program",
+		author: "David Rodriguez",
+		category: "Security Management"
+	}
+];
+---
+
+<Layout title="Blog" description="Expert insights on cybersecurity, vulnerability management, penetration testing, and compliance">
+	<section class="page-header">
+		<div class="container">
+			<h1>Cybersecurity Insights</h1>
+			<p>Expert analysis, best practices, and the latest security trends</p>
+		</div>
+	</section>
+
+	<section class="blog-list">
+		<div class="container">
+			<div class="blog-grid">
+				{blogPosts.map(post => (
+					<BlogCard
+						title={post.title}
+						excerpt={post.excerpt}
+						date={post.date}
+						slug={post.slug}
+						author={post.author}
+						category={post.category}
+					/>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="newsletter">
+		<div class="container">
+			<div class="newsletter-content">
+				<h2>Stay Informed</h2>
+				<p>Subscribe to our newsletter for monthly security insights and updates</p>
+				<form class="newsletter-form">
+					<input type="email" placeholder="Enter your email" required />
+					<button type="submit" class="btn-primary">Subscribe</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.page-header {
+		background: linear-gradient(135deg, var(--dark-bg) 0%, #0d1b2a 100%);
+		padding: 4rem 0;
+		text-align: center;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.page-header h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		color: var(--secondary-color);
+	}
+
+	.page-header p {
+		font-size: 1.25rem;
+		color: var(--text-gray);
+	}
+
+	.blog-list {
+		padding: 5rem 0;
+	}
+
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.newsletter {
+		padding: 5rem 0;
+		background: var(--dark-card);
+	}
+
+	.newsletter-content {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.newsletter h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		color: var(--text-light);
+	}
+
+	.newsletter p {
+		font-size: 1.1rem;
+		color: var(--text-gray);
+		margin-bottom: 2rem;
+	}
+
+	.newsletter-form {
+		display: flex;
+		gap: 1rem;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	.newsletter-form input {
+		flex: 1;
+		padding: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		background: var(--dark-bg);
+		color: var(--text-light);
+		border-radius: 0.5rem;
+		font-size: 1rem;
+	}
+
+	.newsletter-form input:focus {
+		outline: none;
+		border-color: var(--secondary-color);
+	}
+
+	.newsletter-form button {
+		padding: 1rem 2rem;
+		border: none;
+		cursor: pointer;
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 768px) {
+		.page-header h1 {
+			font-size: 2rem;
+		}
+
+		.blog-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.newsletter-form {
+			flex-direction: column;
+		}
+	}
+</style>

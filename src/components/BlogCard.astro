@@ -1,0 +1,108 @@
+---
+interface Props {
+	title: string;
+	excerpt: string;
+	date: string;
+	slug: string;
+	author: string;
+	category: string;
+}
+
+const { title, excerpt, date, slug, author, category } = Astro.props;
+---
+
+<article class="blog-card">
+	<div class="blog-meta">
+		<span class="blog-category">{category}</span>
+		<span class="blog-date">{date}</span>
+	</div>
+	<h3><a href={`/blog/${slug}`}>{title}</a></h3>
+	<p class="blog-excerpt">{excerpt}</p>
+	<div class="blog-footer">
+		<span class="blog-author">By {author}</span>
+		<a href={`/blog/${slug}`} class="read-more">Read More →</a>
+	</div>
+</article>
+
+<style>
+	.blog-card {
+		background: var(--dark-card);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		padding: 2rem;
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.blog-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(0, 163, 255, 0.2);
+		border-color: var(--secondary-color);
+	}
+
+	.blog-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	.blog-category {
+		background: var(--primary-color);
+		color: var(--text-light);
+		padding: 0.25rem 0.75rem;
+		border-radius: 0.25rem;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	.blog-date {
+		color: var(--text-gray);
+		font-size: 0.9rem;
+	}
+
+	.blog-card h3 {
+		margin-bottom: 1rem;
+		font-size: 1.5rem;
+	}
+
+	.blog-card h3 a {
+		color: var(--text-light);
+		text-decoration: none;
+		transition: color 0.3s;
+	}
+
+	.blog-card h3 a:hover {
+		color: var(--secondary-color);
+	}
+
+	.blog-excerpt {
+		color: var(--text-gray);
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+
+	.blog-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.blog-author {
+		color: var(--text-gray);
+		font-size: 0.9rem;
+	}
+
+	.read-more {
+		color: var(--secondary-color);
+		text-decoration: none;
+		font-weight: 600;
+		transition: color 0.3s;
+	}
+
+	.read-more:hover {
+		color: var(--primary-color);
+	}
+</style>
