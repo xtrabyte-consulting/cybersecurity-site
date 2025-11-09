@@ -37,7 +37,10 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 				</div>
 
-				<form class="quote-form" method="POST" action="/api/quote">
+				<form class="quote-form" action="https://api.web3forms.com/submit" method="POST">
+					<input type="hidden" name="access_key" value="b3408989-39d4-4aea-bfc1-13507b4f8e46">
+					<input type="hidden" name="redirect" value="https://xtrabyte-cybersecurity.vercel.app/thank-you">
+					<input type="hidden" name="subject" value="New Quote Request from XtraByte Website">
 					<div class="form-section">
 						<h3>Contact Information</h3>
 						
@@ -530,73 +533,29 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
-	// Form validation and submission handling
+	// Form validation for Web3Forms
 	document.addEventListener('DOMContentLoaded', () => {
 		const form = document.querySelector('.quote-form') as HTMLFormElement;
 		
 		if (form) {
-			form.addEventListener('submit', async (e) => {
-				e.preventDefault();
-				
+			form.addEventListener('submit', (e) => {
 				// Basic validation for checkboxes
 				const serviceCheckboxes = form.querySelectorAll('input[name="services"]:checked');
 				if (serviceCheckboxes.length === 0) {
+					e.preventDefault();
 					alert('Please select at least one service.');
-					return;
+					return false;
 				}
 
-				// Disable submit button and show loading state
+				// Show loading state
 				const submitBtn = form.querySelector('.btn-submit') as HTMLButtonElement;
-				if (!submitBtn) return;
-				
-				const originalText = submitBtn.textContent;
-				submitBtn.disabled = true;
-				submitBtn.textContent = 'Submitting...';
-
-				try {
-					// Collect form data
-					const formData = new FormData(form);
-					const data = {
-						firstName: formData.get('firstName'),
-						lastName: formData.get('lastName'),
-						email: formData.get('email'),
-						phone: formData.get('phone'),
-						company: formData.get('company'),
-						title: formData.get('title'),
-						services: formData.getAll('services'),
-						industry: formData.get('industry'),
-						companySize: formData.get('companySize'),
-						timeline: formData.get('timeline'),
-						budget: formData.get('budget'),
-						details: formData.get('details'),
-						currentSecurity: formData.get('currentSecurity')
-					};
-
-					// Submit to API endpoint
-					const response = await fetch('/api/quote', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify(data)
-					});
-
-					const result = await response.json();
-
-					if (response.ok) {
-						alert('Thank you for your quote request! We will contact you at ' + data.email + ' within 24 hours.');
-						form.reset();
-					} else {
-						throw new Error(result.error || 'Failed to submit form');
-					}
-				} catch (error) {
-					console.error('Form submission error:', error);
-					alert('There was an error submitting your request. Please try again or contact us directly at xbc@xtrabyte.com');
-				} finally {
-					// Re-enable submit button
-					submitBtn.disabled = false;
-					submitBtn.textContent = originalText || 'Submit Quote Request';
+				if (submitBtn) {
+					submitBtn.disabled = true;
+					submitBtn.textContent = 'Submitting...';
 				}
+				
+				// Let the form submit naturally to Web3Forms
+				return true;
 			});
 		}
 	});
