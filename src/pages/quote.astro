@@ -150,11 +150,12 @@ import Layout from '../layouts/Layout.astro';
 							<label for="budget">Budget Range</label>
 							<select id="budget" name="budget">
 								<option value="">Select budget range (optional)</option>
-								<option value="under-10k">Under $10,000</option>
-								<option value="10k-25k">$10,000 - $25,000</option>
-								<option value="25k-50k">$25,000 - $50,000</option>
-								<option value="50k-100k">$50,000 - $100,000</option>
-								<option value="100k+">$100,000+</option>
+								<option value="under-4k">Under $4,000</option>
+								<option value="4k-8k">$4,000 - $8,000</option>
+								<option value="8k-12k">$8,000 - $12,000</option>
+								<option value="12k-20k">$12,000 - $20,000</option>
+								<option value="20k-50k">$20,000 - $50,000</option>
+								<option value="50k+">$50,000+</option>
 							</select>
 						</div>
 					</div>
@@ -204,20 +205,20 @@ import Layout from '../layouts/Layout.astro';
 				<div class="contact-methods">
 					<div class="contact-method">
 						<h3>📧 Email</h3>
-						<p>contact@xtrabyte-security.com</p>
+						<p>xbc@xtrabyte.com</p>
 						<p class="contact-description">For general inquiries</p>
 					</div>
 
 					<div class="contact-method">
 						<h3>📞 Phone</h3>
-						<p>+1 (555) 123-4567</p>
+						<p>+1 (802) 349-5325</p>
 						<p class="contact-description">Mon-Fri 9:00 AM - 6:00 PM EST</p>
 					</div>
 
 					<div class="contact-method">
-						<h3>🚨 Emergency</h3>
-						<p>+1 (555) 123-4911</p>
-						<p class="contact-description">24/7 Security Incident Response</p>
+						<h3>📸 Instagram</h3>
+						<p>@xtrabytevt</p>
+						<p class="contact-description">Follow us for updates and tips</p>
 					</div>
 				</div>
 
@@ -531,7 +532,7 @@ import Layout from '../layouts/Layout.astro';
 <script>
 	// Form validation and submission handling
 	document.addEventListener('DOMContentLoaded', () => {
-		const form = document.querySelector('.quote-form');
+		const form = document.querySelector('.quote-form') as HTMLFormElement;
 		
 		if (form) {
 			form.addEventListener('submit', async (e) => {
@@ -544,10 +545,58 @@ import Layout from '../layouts/Layout.astro';
 					return;
 				}
 
-				// In a real implementation, you would submit to your backend
-				// For now, we'll just show a success message
-				alert('Thank you for your quote request! We will contact you within 24 hours.');
-				form.reset();
+				// Disable submit button and show loading state
+				const submitBtn = form.querySelector('.btn-submit') as HTMLButtonElement;
+				if (!submitBtn) return;
+				
+				const originalText = submitBtn.textContent;
+				submitBtn.disabled = true;
+				submitBtn.textContent = 'Submitting...';
+
+				try {
+					// Collect form data
+					const formData = new FormData(form);
+					const data = {
+						firstName: formData.get('firstName'),
+						lastName: formData.get('lastName'),
+						email: formData.get('email'),
+						phone: formData.get('phone'),
+						company: formData.get('company'),
+						title: formData.get('title'),
+						services: formData.getAll('services'),
+						industry: formData.get('industry'),
+						companySize: formData.get('companySize'),
+						timeline: formData.get('timeline'),
+						budget: formData.get('budget'),
+						details: formData.get('details'),
+						currentSecurity: formData.get('currentSecurity')
+					};
+
+					// Submit to API endpoint
+					const response = await fetch('/api/quote', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(data)
+					});
+
+					const result = await response.json();
+
+					if (response.ok) {
+						alert('Thank you for your quote request! We will contact you at ' + data.email + ' within 24 hours.');
+						form.reset();
+					} else {
+						throw new Error(result.error || 'Failed to submit form');
+					}
+				} catch (error) {
+					console.error('Form submission error:', error);
+					alert('There was an error submitting your request. Please try again or contact us directly at xbc@xtrabyte.com');
+				} finally {
+					// Re-enable submit button
+					submitBtn.disabled = false;
+					submitBtn.textContent = originalText || 'Submit Quote Request';
+				}
 			});
 		}
 	});
