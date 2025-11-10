@@ -1,4 +1,6 @@
 ---
+import logo from '../assets/xtrabytelogo.svg';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -31,8 +33,11 @@ const { title, description = "XtraByte Cybersecurity - Professional CVE Scans, P
 			<nav class="navbar">
 				<div class="container">
 					<a href="/" class="logo">
-						<span class="logo-text">XtraByte</span>
-						<span class="logo-sub">Cybersecurity</span>
+						<img src={logo.src} alt="XtraByte Cybersecurity" class="logo-image" />
+						<div class="logo-text-container">
+							<span class="logo-text">XtraByte</span>
+							<span class="logo-sub">Cybersecurity</span>
+						</div>
 					</a>
 					<ul class="nav-links">
 						<li><a href="/">Home</a></li>
@@ -52,6 +57,7 @@ const { title, description = "XtraByte Cybersecurity - Professional CVE Scans, P
 			<div class="container">
 				<div class="footer-content">
 					<div class="footer-section">
+						<img src={logo.src} alt="XtraByte Cybersecurity" class="footer-logo" />
 						<h3>XtraByte Cybersecurity</h3>
 						<p>Protecting your digital assets with enterprise-grade security solutions.</p>
 					</div>
@@ -145,6 +151,17 @@ const { title, description = "XtraByte Cybersecurity - Professional CVE Scans, P
 	.logo {
 		text-decoration: none;
 		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.logo-image {
+		height: 50px;
+		width: auto;
+	}
+
+	.logo-text-container {
+		display: flex;
 		flex-direction: column;
 	}
 
@@ -205,6 +222,12 @@ const { title, description = "XtraByte Cybersecurity - Professional CVE Scans, P
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 2rem;
 		margin-bottom: 2rem;
+	}
+
+	.footer-logo {
+		height: 60px;
+		width: auto;
+		margin-bottom: 1rem;
 	}
 
 	.footer-section h3 {
