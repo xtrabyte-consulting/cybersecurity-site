@@ -5,12 +5,13 @@ interface Props {
 	icon: string;
 	features: string[];
 	image?: string;
+	link?: string;
 }
 
-const { title, description, icon, features, image } = Astro.props;
+const { title, description, icon, features, image, link } = Astro.props;
 ---
 
-<div class="service-card">
+<a href={link} class="service-card">
 	{image && (
 		<div class="service-image">
 			<img src={image} alt={title} />
@@ -26,7 +27,7 @@ const { title, description, icon, features, image } = Astro.props;
 			))}
 		</ul>
 	</div>
-</div>
+</a>
 
 <style>
 	.service-card {
@@ -35,6 +36,9 @@ const { title, description, icon, features, image } = Astro.props;
 		border-radius: 1rem;
 		overflow: hidden;
 		transition: transform 0.3s, box-shadow 0.3s;
+		text-decoration: none;
+		display: block;
+		cursor: pointer;
 	}
 
 	.service-card:hover {

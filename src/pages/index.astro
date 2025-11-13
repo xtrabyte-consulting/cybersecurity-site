@@ -6,7 +6,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 <Layout title="Home">
 	<section class="hero">
 		<video autoplay muted loop playsinline class="hero-video">
-			<source src="/videos/hero/cyber-ocean.mp4" type="video/mp4" />
+			<source src="/videos/hero/hero-loop.mp4" type="video/mp4" />
 		</video>
 		<div class="hero-overlay"></div>
 		<div class="container">
@@ -31,7 +31,8 @@ import ServiceCard from '../components/ServiceCard.astro';
 					icon="🔍"
 					title="CVE Vulnerability Scans"
 					description="Comprehensive scanning and analysis of Common Vulnerabilities and Exposures across your infrastructure."
-					image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
+					image="/images/services/security-keys.png"
+					link="/services#cve"
 					features={[
 						"Automated continuous scanning",
 						"Detailed vulnerability reports",
@@ -44,7 +45,8 @@ import ServiceCard from '../components/ServiceCard.astro';
 					icon="🛡️"
 					title="Penetration Testing"
 					description="Simulated cyber attacks to identify and exploit vulnerabilities before malicious actors do."
-					image="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+					image="/images/services/penetration-testing.png"
+					link="/services#pentest"
 					features={[
 						"Network and web application testing",
 						"Social engineering assessments",
@@ -57,7 +59,8 @@ import ServiceCard from '../components/ServiceCard.astro';
 					icon="✅"
 					title="EN 18031 Compliance"
 					description="Ensure compliance with the latest EU RED Article 3.3(d,e,f) cybersecurity standards for internet connected devices."
-					image="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"
+					image="/images/services/en-compliance.png"
+					link="/services#compliance"
 					features={[
 						"Gap analysis and assessment",
 						"Thorough implementation testing",
@@ -78,25 +81,37 @@ import ServiceCard from '../components/ServiceCard.astro';
 		<div class="container">
 			<h2 class="section-title">Why Choose XtraByte?</h2>
 			<div class="features-grid">
-				<div class="feature">
+				<div class="feature feature-card" data-feature="team">
 					<div class="feature-icon">🎓</div>
 					<h3>Expert Team</h3>
 					<p>Certified security professionals with decades of combined experience</p>
+					<div class="feature-details">
+						<p>Our team holds certifications including CISSP, CEH, OSCP, and more.</p>
+					</div>
 				</div>
-				<div class="feature">
+				<div class="feature feature-card" data-feature="response">
 					<div class="feature-icon">⚡</div>
 					<h3>Fast Response</h3>
 					<p>24/7 support and rapid incident response capabilities</p>
+					<div class="feature-details">
+						<p>Average response time under 30 minutes for critical incidents.</p>
+					</div>
 				</div>
-				<div class="feature">
+				<div class="feature feature-card" data-feature="methods">
 					<div class="feature-icon">🔒</div>
 					<h3>Proven Methods</h3>
 					<p>Industry-standard methodologies and cutting-edge tools</p>
+					<div class="feature-details">
+						<p>Following NIST, OWASP, and PTES frameworks with latest security tools.</p>
+					</div>
 				</div>
-				<div class="feature">
+				<div class="feature feature-card" data-feature="reporting">
 					<div class="feature-icon">📊</div>
 					<h3>Clear Reporting</h3>
 					<p>Actionable insights with detailed documentation</p>
+					<div class="feature-details">
+						<p>Executive summaries and technical reports tailored to your needs.</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -140,7 +155,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: rgba(10, 14, 26, 0.7);
+		background: rgba(10, 14, 26, 0.3);
 		z-index: 1;
 	}
 
@@ -248,11 +263,33 @@ import ServiceCard from '../components/ServiceCard.astro';
 	.feature {
 		text-align: center;
 		padding: 2rem;
+		position: relative;
+	}
+
+	.feature-card {
+		background: var(--dark-bg);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+
+	.feature-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(0, 163, 255, 0.3);
+		border-color: var(--secondary-color);
+	}
+
+	.feature-card:hover .feature-icon {
+		transform: scale(1.2) rotate(5deg);
 	}
 
 	.feature-icon {
 		font-size: 3rem;
 		margin-bottom: 1rem;
+		transition: transform 0.3s ease;
+		display: inline-block;
 	}
 
 	.feature h3 {
@@ -264,6 +301,26 @@ import ServiceCard from '../components/ServiceCard.astro';
 	.feature p {
 		color: var(--text-gray);
 		line-height: 1.6;
+	}
+
+	.feature-details {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease, padding 0.3s ease;
+		padding: 0 1rem;
+	}
+
+	.feature-card.active .feature-details {
+		max-height: 200px;
+		padding: 1rem;
+		margin-top: 1rem;
+		border-top: 1px solid rgba(0, 163, 255, 0.3);
+	}
+
+	.feature-details p {
+		color: var(--secondary-color);
+		font-size: 0.95rem;
+		font-style: italic;
 	}
 
 	.cta-banner {
@@ -306,3 +363,43 @@ import ServiceCard from '../components/ServiceCard.astro';
 		}
 	}
 </style>
+
+<script>
+	// Make feature cards interactive
+	document.addEventListener('DOMContentLoaded', () => {
+		const featureCards = document.querySelectorAll('.feature-card');
+		
+		featureCards.forEach(card => {
+			card.addEventListener('click', () => {
+				// Toggle active state
+				const isActive = card.classList.contains('active');
+				
+				// Remove active from all cards
+				featureCards.forEach(c => c.classList.remove('active'));
+				
+				// Add active to clicked card if it wasn't active
+				if (!isActive) {
+					card.classList.add('active');
+				}
+			});
+		});
+
+		// Smooth scroll for service card links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e: Event) {
+				const target = e.currentTarget as HTMLAnchorElement;
+				const href = target.getAttribute('href');
+				if (href && href.startsWith('#')) {
+					e.preventDefault();
+					const element = document.querySelector(href);
+					if (element) {
+						element.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				}
+			});
+		});
+	});
+</script>

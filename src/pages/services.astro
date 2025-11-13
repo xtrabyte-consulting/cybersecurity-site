@@ -14,7 +14,9 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container">
 			<div class="service-content">
 				<div class="service-image-container">
-					<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80" alt="CVE Vulnerability Scanning" class="service-hero-image" />
+					<video autoplay muted loop playsinline class="service-hero-video">
+						<source src="/videos/services/vulnerability-scan.mp4" type="video/mp4" />
+					</video>
 				</div>
 				<div class="service-text">
 					<h2>🔍 CVE Vulnerability Scanning</h2>
@@ -53,7 +55,9 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container">
 			<div class="service-content">
 				<div class="service-image-container">
-					<img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80" alt="Penetration Testing" class="service-hero-image" />
+					<video autoplay muted loop playsinline class="service-hero-video">
+						<source src="/videos/services/penetration-testing.mp4" type="video/mp4" />
+					</video>
 				</div>
 				<div class="service-text">
 					<h2>🛡️ Penetration Testing</h2>
@@ -103,7 +107,9 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container">
 			<div class="service-content">
 				<div class="service-image-container">
-					<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt="EN 18031-1 Compliance Testing" class="service-hero-image" />
+					<video autoplay muted loop playsinline class="service-hero-video">
+						<source src="/videos/services/compliance.mp4" type="video/mp4" />
+					</video>
 				</div>
 				<div class="service-text">
 					<h2>✅ EN 18031-1 Compliance Testing</h2>
@@ -252,7 +258,8 @@ import Layout from '../layouts/Layout.astro';
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 	}
 
-	.service-hero-image {
+	.service-hero-image,
+	.service-hero-video {
 		width: 100%;
 		height: 400px;
 		object-fit: cover;
@@ -470,7 +477,8 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 2rem;
 		}
 
-		.service-hero-image {
+		.service-hero-image,
+		.service-hero-video {
 			height: 250px;
 		}
 
