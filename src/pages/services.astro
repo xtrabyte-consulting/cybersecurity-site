@@ -13,6 +13,9 @@ import Layout from '../layouts/Layout.astro';
 	<section class="service-detail" id="cve">
 		<div class="container">
 			<div class="service-content">
+				<div class="service-image-container">
+					<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80" alt="CVE Vulnerability Scanning" class="service-hero-image" />
+				</div>
 				<div class="service-text">
 					<h2>🔍 CVE Vulnerability Scanning</h2>
 					<p class="lead">Stay ahead of threats with comprehensive Common Vulnerabilities and Exposures (CVE) scanning across your entire infrastructure.</p>
@@ -49,6 +52,9 @@ import Layout from '../layouts/Layout.astro';
 	<section class="service-detail alt-bg" id="pentest">
 		<div class="container">
 			<div class="service-content">
+				<div class="service-image-container">
+					<img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80" alt="Penetration Testing" class="service-hero-image" />
+				</div>
 				<div class="service-text">
 					<h2>🛡️ Penetration Testing</h2>
 					<p class="lead">Simulate real-world attacks to identify security weaknesses before malicious actors exploit them.</p>
@@ -96,6 +102,9 @@ import Layout from '../layouts/Layout.astro';
 	<section class="service-detail" id="compliance">
 		<div class="container">
 			<div class="service-content">
+				<div class="service-image-container">
+					<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt="EN 18031-1 Compliance Testing" class="service-hero-image" />
+				</div>
 				<div class="service-text">
 					<h2>✅ EN 18031-1 Compliance Testing</h2>
 					<p class="lead">Ensure compliance with the European standard EN 18031-1 for cybersecurity in critical infrastructure and industrial control systems.</p>
@@ -233,6 +242,21 @@ import Layout from '../layouts/Layout.astro';
 	.service-content {
 		max-width: 900px;
 		margin: 0 auto;
+	}
+
+	.service-image-container {
+		width: 100%;
+		margin-bottom: 2rem;
+		border-radius: 1rem;
+		overflow: hidden;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	}
+
+	.service-hero-image {
+		width: 100%;
+		height: 400px;
+		object-fit: cover;
+		display: block;
 	}
 
 	.service-text h2 {
@@ -444,6 +468,10 @@ import Layout from '../layouts/Layout.astro';
 
 		.service-text h2 {
 			font-size: 2rem;
+		}
+
+		.service-hero-image {
+			height: 250px;
 		}
 
 		.compliance-grid,
