@@ -28,45 +28,92 @@ import ServiceCard from '../components/ServiceCard.astro';
 			
 			<div class="services-grid">
 				<ServiceCard
-					icon="🔍"
-					title="CVE Vulnerability Scans"
-					description="Comprehensive scanning and analysis of Common Vulnerabilities and Exposures across your infrastructure."
-					image="/images/services/security-keys.png"
-					link="/services#cve"
-					features={[
-						"Automated continuous scanning",
-						"Detailed vulnerability reports",
-						"Prioritized remediation guidance",
-						"Real-time threat intelligence"
-					]}
-				/>
-				
-				<ServiceCard
-					icon="🛡️"
-					title="Penetration Testing"
-					description="Simulated cyber attacks to identify and exploit vulnerabilities before malicious actors do."
-					image="/images/services/penetration-testing.png"
-					link="/services#pentest"
-					features={[
-						"Network and web application testing",
-						"Social engineering assessments",
-						"Executive summary reports",
-						"Post-test remediation support"
-					]}
-				/>
-				
-				<ServiceCard
 					icon="✅"
 					title="EN 18031 Compliance"
 					description="Ensure compliance with the latest EU RED Article 3.3(d,e,f) cybersecurity standards for internet connected devices."
 					image="/images/services/en-compliance.png"
 					link="/services#compliance"
 					features={[
-						"Gap analysis and assessment",
-						"Thorough implementation testing",
+						"Threat assessment and attack surface modeling",
+						"Penetration testing aligned to EN 18031 clause mappings",
 						"Compliance roadmap development",
-						"Evidence collection and reporting",
+						"Evidence collection, conformity report, and ICS/IXIT documentation",
 						"Ongoing compliance monitoring and support"
+					]}
+				/>
+
+				
+				<ServiceCard
+					icon="🛡️"
+					title="Penetration Testing"
+					description="Simulated cyber attacks to identify and exploit vulnerabilities before malicious actors do."
+					image="/images/services/hacker-activity.png"
+					link="/services#pentest"
+					features={[
+						"Network and web application testing",
+						"Injection, session, and data exposure flaws testing",
+						"Firmware & Hardware Hacking: UART/JTAG, memory extraction, debug protections bypass",
+						"Social engineering assessments",
+						"Executive summary reports",
+						"Post-test remediation support"
+					]}
+				/>
+								
+				<ServiceCard
+					icon="🔍"
+					title="CVE Scanning"
+					description="Comprehensive scanning and analysis of Common Vulnerabilities and Exposures across your infrastructure."
+					image="/images/services/security-keys.png"
+					link="/services#cve"
+					features={[
+						"Automated continuous CVE monitoring & alert service",
+						"Detailed vulnerability reports",
+						"Prioritized remediation guidance",
+						"Exportable reports for ISO 27001 or EN 18031 technical files",
+						"Integration with CI/CD pipelines",
+						"Real-time threat intelligence"
+					]}
+				/>
+
+				<ServiceCard
+					icon="📱"
+					title="Device & Application Security"
+					description="Comprehensive security assessments for IoT devices, embedded systems, mobile apps, and web interfaces."
+					image="/images/services/device-security.png"
+					link="/services#device-security"
+					features={[
+						"IoT and embedded device testing",
+						"Mobile and desktop app assessments",
+						"Firmware and API security analysis",
+						"Communication protocol review"
+					]}
+				/>
+				
+				<ServiceCard
+					icon="🔧"
+					title="Secure Development Lifecycle"
+					description="Assessment and improvement of your development practices for compliance with EN 303-645, ISO/IEC 27034, and EN 18031 Annex E."
+					image="/images/services/sdlc.png"
+					link="/services#sdlc"
+					features={[
+						"Development practice assessment",
+						"Secure update mechanism review",
+						"Configuration management audit",
+						"Compliance roadmap for standards"
+					]}
+				/>
+				
+				<ServiceCard
+					icon="☁️"
+					title="Cloud & Infrastructure Security"
+					description="Security reviews for cloud-connected IoT systems, SaaS backends, APIs, and control dashboards."
+					image="/images/services/cloud-security.png"
+					link="/services#cloud-security"
+					features={[
+						"Cloud infrastructure hardening",
+						"API security testing",
+						"Backend compliance verification",
+						"IoT connectivity security review"
 					]}
 				/>
 			</div>
