@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro';
 					<h2>✅ EN 18031 Compliance Testing</h2>
 					<p class="lead">Ensure compliance with the mandatory European cybersecurity standard EN 18031 for all internet-connected radio equipment.</p>
 
-					<h3>About EN 18031 Series</h3>
+					<h3>About the EN 18031 Series</h3>
 					<p>EN 18031 is the harmonized standard of cybersecurity requirements necessary for all internet-connected devices with wireless modules to comply with the European Union (EU) Radio Equipment Directive (RED) Articles 3.3(d,e,f). This standard is critical CE certification for organizations selling or planning to sell equipment in the EU with a wireless module and the ability to connect to the internet. There are three main categories of systems that fall under this standard:</p>
 					<ul class="feature-list">
 						<li>EN 18031-1 - Art 3.3(d): Any internet-connected radio equipment</li>
@@ -56,40 +56,49 @@ import Layout from '../layouts/Layout.astro';
 					<h3>Key Compliance Areas</h3>
 					<div class="compliance-grid">
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/access-control.png" alt="Access Control" class="compliance-icon" />
 							<h4>Access Control</h4>
 							<p>Management of entities' access to critical assets</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/authentication.png" alt="Authentication" class="compliance-icon" />
 							<h4>Authentication</h4>
 							<p>Authenticator applicability, strength, implementation, change procedure and brute force protection </p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/secure-updates.png" alt="Secure Updates" class="compliance-icon" />
 							<h4>Secure Updates</h4>
 							<p>Update integrity and authenticity protection and atomicity</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/secure-storage.png" alt="Secure Storage" class="compliance-icon" />
 							<h4>Secure Storage</h4>
 							<p>Critical asset and confidential configuration data protection</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/secure-communication.png" alt="Secure Communication" class="compliance-icon" />
 							<h4>Secure Communication</h4>
 							<p>Communication protocols, encryption, replay protection, and data transmission security</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/resilience.png" alt="Resilience" class="compliance-icon" />
 							<h4>Resilience</h4>
 							<p>DoS/DDoS protection and system recovery</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/monitoring-logging.png" alt="Monitoring & Logging" class="compliance-icon" />
 							<h4>Monitoring & Logging</h4>
 							<p>Security event detection and incident response</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/system-hardening.png" alt="System Hardening" class="compliance-icon" />
 							<h4>System Hardening</h4>
 							<p>Configuration and known exploitation management, input validation, and interface documentation</p>
 						</div>
 						<div class="compliance-item">
+							<img src="/images/services/compliance-mechanisms/cryptography.png" alt="Cryptography" class="compliance-icon" />
 							<h4>Cryptography</h4>
-							<p>Use of best practice cryptographic algorithms and key generation and management</p>
+							<p>Use of best practice cryptographic algorithms, key generation and management</p>
 						</div>
 					</div>
 
@@ -548,6 +557,28 @@ import Layout from '../layouts/Layout.astro';
 		padding: 1.5rem;
 		border-radius: 0.5rem;
 		border: 1px solid rgba(255, 255, 255, 0.1);
+		transition: transform 0.3s, box-shadow 0.3s;
+		text-align: center;
+	}
+
+	.compliance-item:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(159, 191, 42, 0.2);
+		border-color: var(--secondary-color);
+	}
+
+	.compliance-icon {
+		width: 100%;
+		height: 100px;
+		object-fit: contain;
+		margin-bottom: 1rem;
+		opacity: 0.9;
+		transition: transform 0.3s, opacity 0.3s;
+	}
+
+	.compliance-item:hover .compliance-icon {
+		transform: scale(1.1);
+		opacity: 1;
 	}
 
 	.compliance-item h4 {
@@ -646,8 +677,8 @@ import Layout from '../layouts/Layout.astro';
 		font-size: 1.1rem;
 		transition: all 0.3s;
 		display: inline-block;
-		background: var(--text-light);
-		color: var(--primary-color);
+		background: var(--primary-color);
+		color: var(--text-light);
 	}
 
 	.btn-large:hover {
