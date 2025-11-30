@@ -93,7 +93,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 					icon="🔧"
 					title="Secure Development Lifecycle"
 					description="Assessment and improvement of your development practices for compliance with EN 303-645, ISO/IEC 27034, and EN 18031 Annex E."
-					image="/images/services/sdlc-updates.png"
+					image="/images/services/sdlc.png"
 					link="/services#sdlc"
 					features={[
 						"Development practice assessment",
@@ -231,8 +231,8 @@ import ServiceCard from '../components/ServiceCard.astro';
 	}
 
 	.hero-subtitle {
-		font-size: 1.25rem;
-		color: var(--text-gray);
+		font-size: 1.50rem;
+		color: var(--text-light);
 		margin-bottom: 2.5rem;
 		line-height: 1.6;
 	}
@@ -254,6 +254,11 @@ import ServiceCard from '../components/ServiceCard.astro';
 		display: inline-block;
 	}
 
+	.btn-large:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	}
+
 	.btn-secondary {
 		background: transparent;
 		border: 2px solid var(--secondary-color);
@@ -262,7 +267,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 
 	.btn-secondary:hover {
 		background: var(--secondary-color);
-		color: var(--text-light);
+		color: var(--dark-bg);
 	}
 
 	.services-preview {
