@@ -1,0 +1,370 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Understanding the EN 18031 Series: Parts 1, 2, and 3 Explained for Manufacturers" description="Learn how the EN 18031 series defines connected device security, robustness, and resilience and the additional layers of requirements targeting specific classes of products in Part 2 and Part 3.">
+    <article class="blog-post">
+		<div class="container">
+			<header class="post-header">
+				<div class="post-meta">
+					<span class="category">Compliance</span>
+					<span class="date">December 1, 2025</span>
+				</div>
+				<h1>Understanding the EN 18031 Series: Parts 1, 2, and 3 Explained for Manufacturers</h1>
+				<p class="author">By Bryce Kowalczyk, Chief Engineer</p>
+			</header>
+
+			<div class="post-content">
+				<p class="lead">The <strong>EN 18031 series</strong> is Europe’s new cybersecurity standard family for radio-equipped
+                                products, defining what it means for a connected device to be secure, robust, and resilient. While Part
+                                1 provides the baseline, Parts 2 and 3 introduce <strong>additional layers of requirements</strong>
+                                targeting specific classes of products.</p>
+
+				<p><strong>If your company designs, builds, or markets wireless, IoT, or data-processing products for the EU, the
+                            EN 18031 series is likely to become the central framework for your cybersecurity conformity assessment.
+                </strong></p>
+
+                <p><strong>This post explains all three parts, how they apply to manufacturers, and why they matter.</strong></p>
+                
+                <section id="overview">
+                    <h2>Overview of the EN 18031 Series</h2>
+                    <p>The standard series currently includes:</p>
+                    <ul>
+                        <li><strong>EN 18031-1:</strong> Baseline cybersecurity for all radio equipment.</li>
+                        <li><strong>EN 18031-2:</strong> Additional controls for networked devices.</li>
+                        <li><strong>EN 18031-3:</strong> Additional controls for devices handling sensitive or safety-related data.</li>
+                    </ul>
+                    <p>
+                        This structure mirrors the risk-based philosophy of the RED 3.3(d/e/f) Delegated Act — devices with
+                        higher capability or higher consequence of compromise must meet stronger requirements.
+                    </p>
+                    </section>
+
+                    <section id="part-1">
+                    <h2>EN 18031-1: Base Requirements (Applies to Almost Everyone)</h2>
+                    <p>
+                        As described in the first post, EN 18031-1 establishes the fundamental cybersecurity requirements for
+                        radio-equipped devices, including:
+                    </p>
+                    <ul>
+                        <li>Secure boot and update security.</li>
+                        <li>Robust cryptographic requirements.</li>
+                        <li>Access control and authentication.</li>
+                        <li>Network integrity protections.</li>
+                        <li>Data confidentiality and privacy.</li>
+                        <li>Logging, monitoring, and documentation.</li>
+                        <li>DoS resilience.</li>
+                        <li>Secure interface control (wired and wireless).</li>
+                    </ul>
+                    <p>
+                        <strong>Applicability:</strong><br />
+                        Almost all radio-enabled devices. This is the minimum requirement for CE marking.
+                    </p>
+                    </section>
+
+                    <section id="part-2">
+                    <h2>EN 18031-2: Additional Requirements for Network-Connected Devices</h2>
+                    <p>
+                        Part 2 adds further obligations for devices that operate as part of a network — especially devices
+                        that:
+                    </p>
+                    <ul>
+                        <li>Route or relay network traffic.</li>
+                        <li>Expose multiple network services.</li>
+                        <li>Use complex network stacks.</li>
+                        <li>Behave as gateways, controllers, or bridges.</li>
+                    </ul>
+
+                    <h3>Who Does Part 2 Apply To?</h3>
+                    <p>Your device likely falls under Part 2 if it:</p>
+                    <ul>
+                        <li>Has an IP stack (IPv4/IPv6).</li>
+                        <li>Connects to cloud APIs.</li>
+                        <li>Supports BLE + Wi-Fi + cellular simultaneously.</li>
+                        <li>Exposes an HTTP(S) admin interface.</li>
+                        <li>Handles routing, NAT, switching, or tunneling.</li>
+                        <li>Processes packets that affect network integrity.</li>
+                    </ul>
+                    <p>Examples include:</p>
+                    <ul>
+                        <li>Routers and access points.</li>
+                        <li>IoT gateways (LoRaWAN, Zigbee, Thread, Matter bridges).</li>
+                        <li>Industrial PLCs/controllers.</li>
+                        <li>Vehicle telematics units.</li>
+                        <li>Smart home hubs.</li>
+                        <li>Enterprise sensors using Ethernet/LAN/WAN.</li>
+                    </ul>
+
+                    <h3>Additional Requirements Introduced by EN 18031-2</h3>
+                    <p>Part 2 includes enhanced requirements such as:</p>
+                    <ul>
+                        <li>More stringent network-stack hardening.</li>
+                        <li>Validation of packet parsing logic (fuzzing/negative testing).</li>
+                        <li>Requirements for service isolation and sandboxing.</li>
+                        <li>Enforcement of least privilege for network daemons.</li>
+                        <li>Stronger cryptographic identity requirements.</li>
+                        <li>Verification of secure routing, NAT, and bridging behavior.</li>
+                        <li>Resilience against L2/L3 network attacks (ARP spoofing, DHCP manipulation, etc.).</li>
+                    </ul>
+                    </section>
+
+                    <section id="part-3">
+                    <h2>EN 18031-3: Additional Requirements for Devices Handling Sensitive or Safety-Related Data</h2>
+                    <p>
+                        Part 3 escalates security for devices where compromise could cause physical, safety, or significant
+                        privacy harm.
+                    </p>
+
+                    <h3>Who Does Part 3 Apply To?</h3>
+                    <p>Devices that meet any of the following tend to fall under Part 3:</p>
+                    <ul>
+                        <li>Handle authentication credentials or private keys for other systems.</li>
+                        <li>Control actuators, motors, or machinery.</li>
+                        <li>Process sensitive personal data.</li>
+                        <li>Serve as input to safety systems (e.g., structural health, environmental alarms, medical monitoring).</li>
+                        <li>Provide detection, protection, or alerting functions.</li>
+                        <li>May cause physical damage or misinformation if compromised.</li>
+                    </ul>
+                    <p>Examples include:</p>
+                    <ul>
+                        <li>Access control systems.</li>
+                        <li>Industrial sensors for structural or geotechnical monitoring.</li>
+                        <li>Environmental alarm systems (gas, smoke, hazard detection).</li>
+                        <li>Medical IoT devices.</li>
+                        <li>Safety-critical data loggers.</li>
+                        <li>Emergency communication devices.</li>
+                        <li>High-value security gateways or command modules.</li>
+                    </ul>
+
+                    <h3>Additional Requirements Introduced by EN 18031-3</h3>
+                    <p>Part 3 builds on Parts 1 &amp; 2 with:</p>
+                    <ul>
+                        <li>More rigorous integrity protections.</li>
+                        <li>Mandatory device recovery and fail-safe states.</li>
+                        <li>Strict data provenance and trust-chain requirements.</li>
+                        <li>Reinforced authentication for both local and remote access.</li>
+                        <li>
+                        Secure storage for high-sensitivity cryptographic materials
+                        (TPMs, HSMs, secure enclaves recommended).
+                        </li>
+                        <li>Comprehensive anti-tamper mechanisms.</li>
+                        <li>Hardening of local physical interfaces (USB, debug ports, internal buses).</li>
+                        <li>Enhanced logging and audit requirements.</li>
+                        <li>Requirements to detect abnormal behavior or tampering attempts.</li>
+                    </ul>
+                    <p>
+                        In essence, Part 3 expects “security akin to critical infrastructure” for devices whose failure
+                        could create unsafe conditions.
+                    </p>
+                    </section>
+
+                    <section id="why-it-matters">
+                    <h2>Why the EN 18031 Series Matters for Organizations</h2>
+                    <ul>
+                        <li>
+                        <strong>Mandatory for CE Marking Under RED 3.3(d/e/f)</strong><br />
+                        Products must show compliance with EN 18031-1, and if applicable, Parts 2 and 3.
+                        </li>
+                        <li>
+                        <strong>Prevents Product Recalls and Vulnerability Disclosures</strong><br />
+                        The series builds defenses against the most common exploitation vectors.
+                        </li>
+                        <li>
+                        <strong>Aligns With the EU Cyber Resilience Act (CRA)</strong><br />
+                        Early adoption positions companies ahead of future regulatory demands.
+                        </li>
+                        <li>
+                        <strong>Creates a Competitive Advantage</strong><br />
+                        Compliance demonstrates a mature, secure, and trustworthy product — clear marketing value.
+                        </li>
+                        <li>
+                        <strong>Reduces Engineering Risk</strong><br />
+                        The standard forces secure-by-design engineering practices and eliminates hidden technical debt.
+                        </li>
+                        <li>
+                        <strong>Ensures Long-Term Maintainability</strong><br />
+                        Update security, logging, and documentation requirements build long-term operational resilience.
+                        </li>
+                    </ul>
+                    </section>
+
+                    <section id="which-parts-you-need">
+                    <h2>When Does a Manufacturer Need 18031-1 vs. 18031-2 vs. 18031-3?</h2>
+                    <p>A simple rule of thumb:</p>
+                    <ul>
+                        <li><strong>Part 1:</strong> Any radio-enabled device with firmware &rarr; almost universal.</li>
+                        <li>
+                        <strong>Part 2:</strong> If your product participates meaningfully in networking &rarr; routers,
+                        gateways, connected devices.
+                        </li>
+                        <li>
+                        <strong>Part 3:</strong> If compromise creates safety risk or involves sensitive data &rarr; critical
+                        devices, high-impact systems.
+                        </li>
+                    </ul>
+                    <p>
+                        Most meaningful IoT products will need <strong>Parts 1 and 2</strong>. Industrial, security, and
+                        sensing technologies will often require <strong>Parts 1, 2, and 3</strong>.
+                    </p>
+                    </section>
+
+                    <section id="conclusion">
+                    <h2>Conclusion</h2>
+                    <p>
+                        The EN 18031 series is a major step forward in normalizing security for connected devices sold in the
+                        EU. Manufacturers should proactively adopt these standards — not only to meet regulatory deadlines but
+                        also to strengthen product security, protect customers, and gain a long-term competitive edge.
+                    </p>
+                    <p>
+                        Whether you're building a consumer gadget, industrial sensor platform, gateway, or safety-critical
+                        system, EN 18031-1/-2/-3 provides a comprehensive, modern blueprint for secure-by-design engineering.
+                    </p>
+                    </section>
+                </div>
+
+			<div class="post-footer">
+				<a href="/quote" class="btn-primary">Need Help with EN 18031-1 Compliance?</a>
+				<a href="/blog" class="btn-secondary">← Back to Blog</a>
+			</div>
+		</div>
+  </article>
+</Layout>
+
+
+
+<style>
+	.blog-post {
+		padding: 4rem 0;
+	}
+
+	.post-header {
+		position: relative;
+		max-width: 800px;
+		margin: 0 auto 3rem;
+		text-align: center;
+		background: var(--dark-bg);
+	}
+
+	.post-meta {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.category {
+		background: var(--primary-color);
+		color: var(--text-light);
+		padding: 0.25rem 0.75rem;
+		border-radius: 0.25rem;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	.date {
+		color: var(--text-gray);
+		font-size: 0.95rem;
+	}
+
+	.post-header h1 {
+		font-size: 2.0rem;
+		line-height: 1.2;
+		margin-bottom: 1rem;
+		color: var(--text-light);
+	}
+
+	.author {
+		color: var(--text-gray);
+		font-size: 1rem;
+	}
+
+	.post-content {
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.8;
+	}
+
+	.lead {
+		font-size: 1.2rem;
+		color: var(--text-gray);
+		margin-bottom: 2rem;
+		font-style: italic;
+		padding-left: 1.5rem;
+		border-left: 3px solid var(--secondary-color);
+	}
+
+	.post-content h2 {
+		font-size: 2rem;
+		color: var(--secondary-color);
+		margin: 3rem 0 1.5rem;
+	}
+
+	.post-content h3 {
+		font-size: 1.5rem;
+		color: var(--text-light);
+		margin: 2rem 0 1rem;
+	}
+
+	.post-content p {
+		color: var(--text-light);
+		margin-bottom: 1.5rem;
+	}
+
+	.post-content ul,
+	.post-content ol {
+		margin: 1.5rem 0;
+		padding-left: 2rem;
+	}
+
+	.post-content li {
+		color: var(--text-gray);
+		margin-bottom: 0.75rem;
+	}
+
+	.post-content strong {
+		color: var(--text-light);
+	}
+
+	.post-footer {
+		max-width: 800px;
+		margin: 4rem auto 0;
+		padding-top: 3rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.btn-secondary {
+		background: transparent;
+		border: 2px solid var(--secondary-color);
+		color: var(--secondary-color);
+		padding: 0.75rem 1.5rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s;
+	}
+
+	.btn-secondary:hover {
+		background: var(--secondary-color);
+		color: var(--text-light);
+	}
+
+	@media (max-width: 768px) {
+		.post-header h1 {
+			font-size: 1.75rem;
+		}
+
+		.post-content h2 {
+			font-size: 1.5rem;
+		}
+
+		.post-footer {
+			flex-direction: column;
+		}
+	}
+</style>
