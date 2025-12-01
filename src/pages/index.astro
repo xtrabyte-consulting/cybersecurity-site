@@ -14,7 +14,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 				<h1>Enterprise-Grade <span class="highlight">Cybersecurity</span> Solutions</h1>
 				<p class="hero-subtitle">Protect your digital infrastructure with comprehensive security assessments, vulnerability management, and compliance testing.</p>
 				<div class="hero-cta">
-					<a href="/quote" class="btn-large btn-primary">Request a Quote</a>
+					<a href="/quote" class="btn-large btn-hero-primary btn-primary">Request a Quote</a>
 					<a href="/services" class="btn-large btn-secondary">Our Services</a>
 				</div>
 			</div>
@@ -257,6 +257,10 @@ import ServiceCard from '../components/ServiceCard.astro';
 	.btn-large:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	}
+
+	.btn-hero-primary {
+		border: 2px solid var(--primary-color);
 	}
 
 	.btn-secondary {
