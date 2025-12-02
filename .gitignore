@@ -1,24 +1,43 @@
-# build output
-dist/
+###########################################
+# ASTRO + VERCEL PROJECT GITIGNORE
+###########################################
 
-# generated types
+# --- Build output ---
+dist/
 .astro/
 
-# dependencies
+# --- Dependencies ---
 node_modules/
 
-# logs
+# --- Environment variables ---
+.env
+.env.*        # env.local, env.production, etc.
+
+# --- Logs ---
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-# environment variables
-.env
-.env.production
+# --- Editor directories/files ---
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 
-# macOS-specific files
-.DS_Store
-
-# jetbrains setting folder
+# JetBrains / WebStorm
 .idea/
+
+# --- Operating system files ---
+.DS_Store
+Thumbs.db
+
+# --- Vercel local metadata (never commit) ---
+.vercel/
+vercel.json
+
+# --- Misc ---
+*.pid
+*.pid.lock
+*.tsbuildinfo
