@@ -15,212 +15,259 @@ import Layout from '../../layouts/Layout.astro';
 			</header>
 
 			<div class="post-content">
-				<p class="lead">The <strong>EN 18031 series</strong> is Europe’s new cybersecurity standard family for radio-equipped
-                                products, defining what it means for a connected device to be secure, robust, and resilient. While Part
-                                1 provides the baseline, Parts 2 and 3 introduce <strong>additional layers of requirements</strong>
-                                targeting specific classes of products.</p>
+				<p class="lead">The <strong>EN 18031 series</strong> is Europe’s emerging cybersecurity standard family for
+                    radio-equipped products, defining what it means for a connected device to be secure, robust,
+                    and resilient under the Radio Equipment Directive (RED) Article 3.3 (d), (e), and (f).</p>
+
+                <p>
+                    While Part 1 provides the horizontal <strong>baseline security requirements</strong>, Parts 2 and 3
+                    add <strong>additional controls</strong> for specific categories of products:
+                    devices that process personal/traffic/location data and devices that process or transfer money
+                    or monetary value.
+                </p>
 
 				<p><strong>If your company designs, builds, or markets wireless, IoT, or data-processing products for the EU, the
-                            EN 18031 series is likely to become the central framework for your cybersecurity conformity assessment.
+                            EN 18031 series is the central framework for your cybersecurity conformity assessment.
                 </strong></p>
 
                 <p><strong>This post explains all three parts, how they apply to manufacturers, and why they matter.</strong></p>
                 
                 <section id="overview">
                     <h2>Overview of the EN 18031 Series</h2>
-                    <p>The standard series currently includes:</p>
+                    <p>The standard series is structured as follows:</p>
                     <ul>
-                        <li><strong>EN 18031-1:</strong> Baseline cybersecurity for all radio equipment.</li>
-                        <li><strong>EN 18031-2:</strong> Additional controls for networked devices.</li>
-                        <li><strong>EN 18031-3:</strong> Additional controls for devices handling sensitive or safety-related data.</li>
+                    <li>
+                        <strong>EN 18031-1:</strong> Baseline cybersecurity requirements for all in-scope radio equipment.
+                    </li>
+                    <li>
+                        <strong>EN 18031-2:</strong> Additional requirements for devices that process
+                        <strong>personal, traffic or location data</strong> — with particular emphasis on
+                        childcare equipment, toys, and wearables.
+                    </li>
+                    <li>
+                        <strong>EN 18031-3:</strong> Additional requirements for equipment that
+                        <strong>processes or transfers money or monetary value</strong>.
+                    </li>
                     </ul>
                     <p>
-                        This structure mirrors the risk-based philosophy of the RED 3.3(d/e/f) Delegated Act — devices with
-                        higher capability or higher consequence of compromise must meet stronger requirements.
+                    In other words:
                     </p>
-                    </section>
+                    <ul>
+                    <li>Part 1 = baseline security for radio products.</li>
+                    <li>Part 2 = extra protection for people’s <em>data, privacy, and location</em>.</li>
+                    <li>Part 3 = extra protection for <em>payments and monetary value</em>.</li>
+                    </ul>
+                </section>
 
-                    <section id="part-1">
+                <section id="part-1">
                     <h2>EN 18031-1: Base Requirements (Applies to Almost Everyone)</h2>
                     <p>
-                        As described in the first post, EN 18031-1 establishes the fundamental cybersecurity requirements for
-                        radio-equipped devices, including:
+                    EN 18031-1 provides the horizontal baseline cybersecurity requirements that most radio equipment
+                    must meet. It covers:
                     </p>
                     <ul>
-                        <li>Secure boot and update security.</li>
-                        <li>Robust cryptographic requirements.</li>
-                        <li>Access control and authentication.</li>
-                        <li>Network integrity protections.</li>
-                        <li>Data confidentiality and privacy.</li>
-                        <li>Logging, monitoring, and documentation.</li>
-                        <li>DoS resilience.</li>
-                        <li>Secure interface control (wired and wireless).</li>
+                    <li>Secure boot, firmware integrity, and update security.</li>
+                    <li>Cryptographic protections and key management.</li>
+                    <li>Access control and authentication.</li>
+                    <li>Network integrity and resilience against attacks.</li>
+                    <li>Data confidentiality and privacy controls.</li>
+                    <li>Logging, monitoring, and security documentation.</li>
                     </ul>
                     <p>
-                        <strong>Applicability:</strong><br />
-                        Almost all radio-enabled devices. This is the minimum requirement for CE marking.
+                    <strong>Applicability:</strong><br />
+                    Almost any radio-enabled product that falls under RED Article 3.3(d/e/f) will need
+                    to demonstrate compliance with EN 18031-1 or an equivalent technical basis.
                     </p>
-                    </section>
+                </section>
 
-                    <section id="part-2">
-                    <h2>EN 18031-2: Additional Requirements for Network-Connected Devices</h2>
+                <section id="part-2">
+                    <h2>
+                    EN 18031-2: Additional Requirements for Devices Processing Personal, Traffic or Location Data
+                    </h2>
                     <p>
-                        Part 2 adds further obligations for devices that operate as part of a network — especially devices
-                        that:
+                    EN 18031-2 builds on Part 1 with added protections for devices that process
+                    <strong>personal data, traffic data, or location data</strong>. This is especially relevant where
+                    the end users are <strong>children</strong> or where fine-grained location tracking is involved.
                     </p>
-                    <ul>
-                        <li>Route or relay network traffic.</li>
-                        <li>Expose multiple network services.</li>
-                        <li>Use complex network stacks.</li>
-                        <li>Behave as gateways, controllers, or bridges.</li>
-                    </ul>
 
-                    <h3>Who Does Part 2 Apply To?</h3>
-                    <p>Your device likely falls under Part 2 if it:</p>
-                    <ul>
-                        <li>Has an IP stack (IPv4/IPv6).</li>
-                        <li>Connects to cloud APIs.</li>
-                        <li>Supports BLE + Wi-Fi + cellular simultaneously.</li>
-                        <li>Exposes an HTTP(S) admin interface.</li>
-                        <li>Handles routing, NAT, switching, or tunneling.</li>
-                        <li>Processes packets that affect network integrity.</li>
-                    </ul>
-                    <p>Examples include:</p>
-                    <ul>
-                        <li>Routers and access points.</li>
-                        <li>IoT gateways (LoRaWAN, Zigbee, Thread, Matter bridges).</li>
-                        <li>Industrial PLCs/controllers.</li>
-                        <li>Vehicle telematics units.</li>
-                        <li>Smart home hubs.</li>
-                        <li>Enterprise sensors using Ethernet/LAN/WAN.</li>
-                    </ul>
-
-                    <h3>Additional Requirements Introduced by EN 18031-2</h3>
-                    <p>Part 2 includes enhanced requirements such as:</p>
-                    <ul>
-                        <li>More stringent network-stack hardening.</li>
-                        <li>Validation of packet parsing logic (fuzzing/negative testing).</li>
-                        <li>Requirements for service isolation and sandboxing.</li>
-                        <li>Enforcement of least privilege for network daemons.</li>
-                        <li>Stronger cryptographic identity requirements.</li>
-                        <li>Verification of secure routing, NAT, and bridging behavior.</li>
-                        <li>Resilience against L2/L3 network attacks (ARP spoofing, DHCP manipulation, etc.).</li>
-                    </ul>
-                    </section>
-
-                    <section id="part-3">
-                    <h2>EN 18031-3: Additional Requirements for Devices Handling Sensitive or Safety-Related Data</h2>
+                    <h3>Who Does EN 18031-2 Apply To?</h3>
                     <p>
-                        Part 3 escalates security for devices where compromise could cause physical, safety, or significant
-                        privacy harm.
+                    Your product is likely in scope for EN 18031-2 if it:
                     </p>
-
-                    <h3>Who Does Part 3 Apply To?</h3>
-                    <p>Devices that meet any of the following tend to fall under Part 3:</p>
                     <ul>
-                        <li>Handle authentication credentials or private keys for other systems.</li>
-                        <li>Control actuators, motors, or machinery.</li>
-                        <li>Process sensitive personal data.</li>
-                        <li>Serve as input to safety systems (e.g., structural health, environmental alarms, medical monitoring).</li>
-                        <li>Provide detection, protection, or alerting functions.</li>
-                        <li>May cause physical damage or misinformation if compromised.</li>
+                    <li>Processes personal data directly related to a specific user or child.</li>
+                    <li>Handles telecom “traffic data” (who communicates with whom, when, how).</li>
+                    <li>Collects, transmits, or stores location data, especially continuous tracking.</li>
+                    <li>Targets children or vulnerable users as a primary audience.</li>
                     </ul>
-                    <p>Examples include:</p>
+                    <p>Typical examples include:</p>
                     <ul>
-                        <li>Access control systems.</li>
-                        <li>Industrial sensors for structural or geotechnical monitoring.</li>
-                        <li>Environmental alarm systems (gas, smoke, hazard detection).</li>
-                        <li>Medical IoT devices.</li>
-                        <li>Safety-critical data loggers.</li>
-                        <li>Emergency communication devices.</li>
-                        <li>High-value security gateways or command modules.</li>
+                    <li>Childcare and baby-monitoring equipment with radio connectivity.</li>
+                    <li>Smart toys that connect to apps or cloud services.</li>
+                    <li>Wearables such as smartwatches and fitness trackers with GPS.</li>
+                    <li>Location-tracking devices (child locators, pet trackers, asset tags used on people).</li>
+                    <li>Consumer devices that infer sensitive behaviours from traffic or location patterns.</li>
                     </ul>
 
-                    <h3>Additional Requirements Introduced by EN 18031-3</h3>
-                    <p>Part 3 builds on Parts 1 &amp; 2 with:</p>
+                    <h3>What Additional Requirements Does EN 18031-2 Introduce?</h3>
+                    <p>
+                    On top of the Part 1 baseline, EN 18031-2 focuses on <strong>privacy, confidentiality,
+                    and misuse prevention</strong>, for example:
+                    </p>
                     <ul>
-                        <li>More rigorous integrity protections.</li>
-                        <li>Mandatory device recovery and fail-safe states.</li>
-                        <li>Strict data provenance and trust-chain requirements.</li>
-                        <li>Reinforced authentication for both local and remote access.</li>
-                        <li>
-                        Secure storage for high-sensitivity cryptographic materials
-                        (TPMs, HSMs, secure enclaves recommended).
-                        </li>
-                        <li>Comprehensive anti-tamper mechanisms.</li>
-                        <li>Hardening of local physical interfaces (USB, debug ports, internal buses).</li>
-                        <li>Enhanced logging and audit requirements.</li>
-                        <li>Requirements to detect abnormal behavior or tampering attempts.</li>
+                    <li>Stronger protections for the collection, storage, and transmission of personal data.</li>
+                    <li>
+                        Safeguards against unauthorized access to traffic/location data, including robust authentication
+                        and access control.
+                    </li>
+                    <li>
+                        Requirements for minimizing data collection and retention where possible
+                        (“data minimization” principles).
+                    </li>
+                    <li>
+                        Enhanced protections to prevent covert tracking or surveillance of users,
+                        especially children.
+                    </li>
+                    <li>
+                        Clear handling of consent, user awareness, and secure default configurations for privacy.
+                    </li>
                     </ul>
                     <p>
-                        In essence, Part 3 expects “security akin to critical infrastructure” for devices whose failure
-                        could create unsafe conditions.
+                    In practice, Part 2 pushes manufacturers to treat personal and location data as
+                    <strong>high-sensitivity information</strong> with appropriate technical protections.
                     </p>
-                    </section>
+                </section>
 
-                    <section id="why-it-matters">
+                <section id="part-3">
+                    <h2>EN 18031-3: Additional Requirements for Money and Monetary Value</h2>
+                    <p>
+                    EN 18031-3 introduces further requirements for radio equipment that
+                    <strong>processes or transfers money or monetary value</strong>. This includes devices that
+                    initiate, authorize, or execute payments, as well as equipment that stores or represents digital value.
+                    </p>
+
+                    <h3>Who Does EN 18031-3 Apply To?</h3>
+                    <p>Examples of in-scope products include:</p>
+                    <ul>
+                    <li>Point-of-sale (POS) terminals and mobile payment readers.</li>
+                    <li>Contactless payment devices and card readers.</li>
+                    <li>Equipment used for ticketing and fare collection (transport cards, turnstile readers, etc.).</li>
+                    <li>
+                        Radio-enabled devices that store or transfer prepaid balances, vouchers, or other forms of
+                        monetary value.
+                    </li>
+                    <li>
+                        Embedded payment modules integrated into consumer products (e.g., wearables with NFC payment).
+                    </li>
+                    </ul>
+
+                    <h3>What Additional Requirements Does EN 18031-3 Introduce?</h3>
+                    <p>
+                    Building on the baseline of Part 1 (and Part 2 when personal data is involved), EN 18031-3 focuses on
+                    <strong>transaction integrity, anti-fraud, and protection of monetary value</strong>, for example:
+                    </p>
+                    <ul>
+                    <li>Stronger requirements for cryptographic protection of payment data and keys.</li>
+                    <li>
+                        Mechanisms to ensure that transactions cannot be modified, replayed, or forged in transit.
+                    </li>
+                    <li>
+                        Protections against cloning or tampering with devices that hold monetary value or payment credentials.
+                    </li>
+                    <li>
+                        Enhanced logging and traceability of payment-related events to support fraud detection and dispute handling.
+                    </li>
+                    <li>
+                        Robust handling of secure elements, secure enclaves, or dedicated hardware used for payments.
+                    </li>
+                    </ul>
+                    <p>
+                    In short, Part 3 treats radio equipment involved in payments as a
+                    <strong>financially critical system</strong> that must withstand more sophisticated attacks.
+                    </p>
+                </section>
+
+                <section id="why-it-matters">
                     <h2>Why the EN 18031 Series Matters for Organizations</h2>
+                    <p>
+                    For manufacturers, the EN 18031 series is not just a paperwork exercise — it has direct implications
+                    for design, architecture, and market access.
+                    </p>
                     <ul>
-                        <li>
-                        <strong>Mandatory for CE Marking Under RED 3.3(d/e/f)</strong><br />
-                        Products must show compliance with EN 18031-1, and if applicable, Parts 2 and 3.
-                        </li>
-                        <li>
-                        <strong>Prevents Product Recalls and Vulnerability Disclosures</strong><br />
-                        The series builds defenses against the most common exploitation vectors.
-                        </li>
-                        <li>
-                        <strong>Aligns With the EU Cyber Resilience Act (CRA)</strong><br />
-                        Early adoption positions companies ahead of future regulatory demands.
-                        </li>
-                        <li>
-                        <strong>Creates a Competitive Advantage</strong><br />
-                        Compliance demonstrates a mature, secure, and trustworthy product — clear marketing value.
-                        </li>
-                        <li>
-                        <strong>Reduces Engineering Risk</strong><br />
-                        The standard forces secure-by-design engineering practices and eliminates hidden technical debt.
-                        </li>
-                        <li>
-                        <strong>Ensures Long-Term Maintainability</strong><br />
-                        Update security, logging, and documentation requirements build long-term operational resilience.
-                        </li>
+                    <li>
+                        <strong>Regulatory compliance:</strong> It provides the technical basis for demonstrating conformity
+                        with RED Article 3.3(d/e/f) cybersecurity requirements.
+                    </li>
+                    <li>
+                        <strong>Privacy and safety:</strong> Parts 2 and 3 explicitly protect users’ personal data, location,
+                        and financial transactions.
+                    </li>
+                    <li>
+                        <strong>Market differentiation:</strong> Demonstrating security-by-design and robust implementation
+                        can be a competitive advantage.
+                    </li>
+                    <li>
+                        <strong>Alignment with broader EU initiatives:</strong> The series dovetails with the EU’s broader
+                        cybersecurity and product safety agenda (e.g. the Cyber Resilience Act).
+                    </li>
+                    <li>
+                        <strong>Risk reduction:</strong> Early adoption reduces the risk of recalls, incidents, and costly
+                        post-market fixes.
+                    </li>
                     </ul>
-                    </section>
+                </section>
 
-                    <section id="which-parts-you-need">
-                    <h2>When Does a Manufacturer Need 18031-1 vs. 18031-2 vs. 18031-3?</h2>
-                    <p>A simple rule of thumb:</p>
+                <section id="which-parts-you-need">
+                    <h2>Which Parts of EN 18031 Apply to Your Product?</h2>
+                    <p>
+                    A simple way to think about applicability:
+                    </p>
                     <ul>
-                        <li><strong>Part 1:</strong> Any radio-enabled device with firmware &rarr; almost universal.</li>
-                        <li>
-                        <strong>Part 2:</strong> If your product participates meaningfully in networking &rarr; routers,
-                        gateways, connected devices.
-                        </li>
-                        <li>
-                        <strong>Part 3:</strong> If compromise creates safety risk or involves sensitive data &rarr; critical
-                        devices, high-impact systems.
-                        </li>
+                    <li>
+                        <strong>EN 18031-1:</strong> Applies to <em>most radio devices</em> within the scope of RED Article 3.3(d/e/f).
+                    </li>
+                    <li>
+                        <strong>EN 18031-2:</strong> Add this if your product processes
+                        <strong>personal, traffic, or location data</strong> — especially for children (toys, wearables,
+                        trackers, childcare equipment).
+                    </li>
+                    <li>
+                        <strong>EN 18031-3:</strong> Add this if your product
+                        <strong>processes or transfers money or monetary value</strong> (payment devices, fare systems,
+                        prepaid value, etc.).
+                    </li>
                     </ul>
                     <p>
-                        Most meaningful IoT products will need <strong>Parts 1 and 2</strong>. Industrial, security, and
-                        sensing technologies will often require <strong>Parts 1, 2, and 3</strong>.
+                    Many modern products will fall under multiple parts. For example:
                     </p>
-                    </section>
+                    <ul>
+                    <li>
+                        A child’s smartwatch with GPS and payment capability could be in scope for all three:
+                        Part 1 (baseline), Part 2 (personal/location data), and Part 3 (monetary value).
+                    </li>
+                    <li>
+                        A simple radio sensor that does not handle personal data or payments may only need Part 1.
+                    </li>
+                    </ul>
+                </section>
 
-                    <section id="conclusion">
+                <section id="conclusion">
                     <h2>Conclusion</h2>
                     <p>
-                        The EN 18031 series is a major step forward in normalizing security for connected devices sold in the
-                        EU. Manufacturers should proactively adopt these standards — not only to meet regulatory deadlines but
-                        also to strengthen product security, protect customers, and gain a long-term competitive edge.
+                    The EN 18031 series clarifies <em>what</em> secure radio equipment must do across three layers:
+                    a baseline for all, extra protection for personal/location data, and targeted safeguards for
+                    payment-related functionality.
                     </p>
                     <p>
-                        Whether you're building a consumer gadget, industrial sensor platform, gateway, or safety-critical
-                        system, EN 18031-1/-2/-3 provides a comprehensive, modern blueprint for secure-by-design engineering.
+                    Manufacturers who map their products carefully to EN 18031-1, -2, and -3 can design security
+                    into their devices from the start, streamline their conformity assessment, and provide stronger
+                    assurances to regulators, customers, and end users.
                     </p>
-                    </section>
-                </div>
+                    <p>
+                    As enforcement timelines approach, now is the time to align product roadmaps, firmware design, and
+                    documentation with the structure and intent of the EN 18031 series.
+                    </p>
+                </section>
 
 			<div class="post-footer">
 				<a href="/quote" class="btn-primary">Need Help with EN 18031-1 Compliance?</a>
